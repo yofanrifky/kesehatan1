@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLife - Konsultan Nutrisi & Pola Hidup Sehat</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Family Inter & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nutri: {
+                            greenDark: '#2E7D32',
+                            green: '#4CAF50',
+                            greenLight: '#E8F5E9',
+                            yellowDark: '#FBC02D',
+                            yellow: '#FFF59D',
+                            yellowLight: '#FFFDE7',
+                            orangeDark: '#D84315',
+                            orangeHover: '#BF360C',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-shape-divider-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+        .custom-shape-divider-bottom svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-amber-50/30 text-gray-800 font-sans antialiased selection:bg-nutri-yellow selection:text-nutri-orangeDark">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm border-b border-green-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-nutri-green to-nutri-greenDark flex items-center justify-center text-white text-2xl shadow-md">
+                        <i class="fa-solid fa-leaf"></i>
+                    </div>
+                    <div>
+                        <span class="text-2xl font-extrabold text-nutri-orangeDark tracking-tight">Nutri<span class="text-nutri-greenDark">Life</span></span>
+                        <span class="block text-xs font-semibold text-nutri-greenDark uppercase tracking-wider">Nutritional Care</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8 font-semibold">
+                    <a href="#home" class="text-nutri-orangeDark hover:text-nutri-orangeHover transition-colors">Beranda</a>
+                    <a href="#layanan" class="text-gray-700 hover:text-nutri-orangeDark transition-colors">Layanan</a>
+                    <a href="#kalkulator" class="text-gray-700 hover:text-nutri-orangeDark transition-colors">Kalkulator BMI</a>
+                    <a href="#testimoni" class="text-gray-700 hover:text-nutri-orangeDark transition-colors">Testimoni</a>
+                    <a href="#konsultasi" class="bg-nutri-orangeDark hover:bg-nutri-orangeHover text-white px-5 py-2.5 rounded-full shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>Konsultasi Gratis
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuBtn" class="text-gray-700 hover:text-nutri-orangeDark p-2 focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#home" class="block py-2 text-nutri-orangeDark font-bold">Beranda</a>
+            <a href="#layanan" class="block py-2 text-gray-700 hover:text-nutri-orangeDark font-medium">Layanan</a>
+            <a href="#kalkulator" class="block py-2 text-gray-700 hover:text-nutri-orangeDark font-medium">Kalkulator BMI</a>
+            <a href="#testimoni" class="block py-2 text-gray-700 hover:text-nutri-orangeDark font-medium">Testimoni</a>
+            <a href="#konsultasi" class="block py-2.5 text-center bg-nutri-orangeDark text-white font-bold rounded-xl shadow">
+                Konsultasi Gratis
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative bg-gradient-to-br from-nutri-greenLight via-white to-nutri-yellowLight py-16 lg:py-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-nutri-yellow px-4 py-2 rounded-full border border-yellow-300 shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-nutri-orangeDark animate-pulse"></span>
+                        <span class="text-xs sm:text-sm font-bold text-nutri-orangeDark uppercase tracking-wider">Ahli Nutrisi & Ahli Gizi Terregistrasi</span>
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-nutri-orangeDark leading-tight">
+                        Wujudkan Tubuh Sehat & Ideal Dengan <span class="text-nutri-greenDark underline decoration-nutri-yellowDark decoration-4 underline-offset-4">Pola Makan Tepat</span>
+                    </h1>
+                    
+                    <p class="text-lg text-gray-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Kami membantu Anda mencapai berat badan impian, mengelola kondisi kesehatan, dan meningkatkan energi harian melalui program nutrisi yang dirancang khusus personal untuk kebutuhan tubuh Anda.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#konsultasi" class="w-full sm:w-auto px-8 py-4 bg-nutri-orangeDark hover:bg-nutri-orangeHover text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-center">
+                            Mulai Konsultasi <i class="fa-solid fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#kalkulator" class="w-full sm:w-auto px-8 py-4 bg-nutri-greenDark hover:bg-nutri-greenHover text-white font-bold text-lg rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 text-center">
+                            <i class="fa-solid fa-calculator mr-2 text-nutri-white"></i> Hitung BMI Gratis
+                        </a>
+                    </div>
+
+                    <!-- Highlights Badge -->
+                    <div class="pt-8 grid grid-cols-3 gap-4 border-t border-green-200/60 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="text-2xl font-black text-nutri-orangeDark">1,500+</p>
+                            <p class="text-xs sm:text-sm text-gray-600 font-medium">Klien Puas</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-nutri-greenDark">98%</p>
+                            <p class="text-xs sm:text-sm text-gray-600 font-medium">Tingkat Keberhasilan</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl font-black text-nutri-orangeDark">10+ Thn</p>
+                            <p class="text-xs sm:text-sm text-gray-600 font-medium">Pengalaman</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Illustration Banner -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Decorative background circle -->
+                        <div class="absolute inset-0 bg-gradient-to-tr from-nutri-yellowDark to-nutri-green rounded-full blur-2xl opacity-40 animate-pulse"></div>
+                        
+                        <!-- Main Card -->
+                        <div class="relative bg-white p-6 sm:p-8 rounded-3xl shadow-2xl border-4 border-nutri-yellow">
+                            <div class="relative rounded-2xl overflow-hidden bg-nutri-greenLight p-6 text-center mb-6">
+                                <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=600&q=80" alt="Makanan Sehat" class="w-full h-48 object-cover rounded-xl shadow-md mb-4">
+                                <div class="inline-block bg-nutri-orangeDark text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">
+                                    Menu Sehat Harian
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Badge 1 -->
+                            <div class="flex items-center space-x-4 p-3 bg-nutri-yellowLight rounded-xl border border-yellow-200 mb-3 shadow-sm">
+                                <div class="w-10 h-10 rounded-lg bg-nutri-orangeDark text-white flex items-center justify-center font-bold text-lg">
+                                    <i class="fa-solid fa-apple-whole"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-nutri-orangeDark text-sm">Gizi Seimbang</h4>
+                                    <p class="text-xs text-gray-600">Makro & Mikro Nutrisi Terukur</p>
+                                </div>
+                            </div>
+
+                            <!-- Floating Badge 2 -->
+                            <div class="flex items-center space-x-4 p-3 bg-nutri-greenLight rounded-xl border border-green-200 shadow-sm">
+                                <div class="w-10 h-10 rounded-lg bg-nutri-greenDark text-white flex items-center justify-center font-bold text-lg">
+                                    <i class="fa-solid fa-heart-pulse"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-nutri-greenDark text-sm">Monitoring Rutin</h4>
+                                    <p class="text-xs text-gray-600">Evaluasi Perkembangan Mingguan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="layanan" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-nutri-greenDark font-extrabold uppercase tracking-wider text-sm bg-nutri-greenLight px-4 py-1.5 rounded-full border border-green-200">
+                    Layanan Unggulan
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-nutri-orangeDark mt-4 mb-3">
+                    Program Nutrisi Yang Dirancang Khusus Untuk Anda
+                </h2>
+                <p class="text-gray-600 text-lg">
+                    Setiap tubuh itu unik. Kami menghadirkan solusi yang dipersonalisasi sesuai target kesehatan dan gaya hidup Anda.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-gradient-to-b from-white to-nutri-yellowLight p-8 rounded-3xl border border-yellow-200 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-nutri-orangeDark text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-utensils"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-nutri-orangeDark mb-3">Meal Plan Personal</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Panduan menu makanan harian sesuai selera lokal, anggaran, dan toleransi tubuh Anda tanpa merasa terdisiplin ketat.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700 font-medium mb-6">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Menu Bervariasi Bebas Bosan</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Resep & Takaran Kalori Lengkap</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Penyesuaian Alergi / Pantangan</li>
+                    </ul>
+                    <a href="#konsultasi" class="inline-block text-center w-full py-3 bg-white text-nutri-orangeDark font-bold rounded-xl border border-nutri-orangeDark hover:bg-nutri-orangeDark hover:text-white transition-colors">Pilih Program</a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-gradient-to-b from-white to-nutri-greenLight p-8 rounded-3xl border border-green-200 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-nutri-yellowDark text-nutri-orangeDark text-xs font-black px-3 py-1 rounded-full uppercase">Paling Populer</div>
+                    <div>
+                        <div class="w-16 h-16 bg-nutri-greenDark text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-weight-scale"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-nutri-greenDark mb-3">Manajemen Berat Badan</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Program penurunan atau pemeliharaan berat badan ideal jangka panjang secara aman dan bebas dari diet ekstrem.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700 font-medium mb-6">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Edukasi Defisit/Surplus Kalori</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Pendampingan Konsultan Privat</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Bebas Efek Yoyo</li>
+                    </ul>
+                    <a href="#konsultasi" class="inline-block text-center w-full py-3 bg-nutri-greenDark text-white font-bold rounded-xl hover:bg-green-800 transition-colors shadow">Pilih Program</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-gradient-to-b from-white to-nutri-yellowLight p-8 rounded-3xl border border-yellow-200 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between">
+                    <div>
+                        <div class="w-16 h-16 bg-nutri-orangeDark text-white rounded-2xl flex items-center justify-center text-2xl mb-6 shadow-md">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-nutri-orangeDark mb-3">Nutrisi Olahraga & Medis</h3>
+                        <p class="text-gray-600 leading-relaxed mb-6">
+                            Optimalisasi stamina untuk atlet atau pengelolaan nutrisi untuk diabetes, kolesterol, dan tekanan darah tinggi.
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-700 font-medium mb-6">
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Peningkatan Performa Fisik</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Kontrol Gula Darah & Kolesterol</li>
+                        <li class="flex items-center"><i class="fa-solid fa-circle-check text-nutri-greenDark mr-2"></i> Strategi Suplementasi Tepat</li>
+                    </ul>
+                    <a href="#konsultasi" class="inline-block text-center w-full py-3 bg-white text-nutri-orangeDark font-bold rounded-xl border border-nutri-orangeDark hover:bg-nutri-orangeDark hover:text-white transition-colors">Pilih Program</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BMI / CALORIE CALCULATOR SECTION -->
+    <section id="kalkulator" class="py-20 bg-gradient-to-br from-nutri-greenDark to-emerald-900 text-white relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="bg-nutri-yellow text-nutri-orangeDark text-xs font-extrabold uppercase px-4 py-1.5 rounded-full">Kalkulator Interaktif</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-4 mb-2">Cek Indeks Massa Tubuh (BMI) Anda</h2>
+                <p class="text-green-100 max-w-xl mx-auto">Ketahui status gizi awal Anda dengan menghitung BMI dan perkiraan kebutuhan kalori harian.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-2xl text-gray-800">
+                <form id="bmiForm" onsubmit="return false;" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <!-- Inputs -->
+                    <div class="space-y-5">
+                        <div>
+                            <label class="block text-sm font-bold text-nutri-orangeDark mb-2">Jenis Kelamin</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <label class="flex items-center justify-center p-3 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-nutri-green transition-colors font-semibold">
+                                    <input type="radio" name="gender" value="male" checked class="accent-nutri-green mr-2"> Pria
+                                </label>
+                                <label class="flex items-center justify-center p-3 border-2 border-gray-200 rounded-xl cursor-pointer hover:border-nutri-green transition-colors font-semibold">
+                                    <input type="radio" name="gender" value="female" class="accent-nutri-green mr-2"> Wanita
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="weight" class="block text-sm font-bold text-nutri-orangeDark mb-1">Berat Badan (kg)</label>
+                                <input type="number" id="weight" placeholder="65" required min="20" max="250" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-nutri-green focus:outline-none font-semibold">
+                            </div>
+                            <div>
+                                <label for="height" class="block text-sm font-bold text-nutri-orangeDark mb-1">Tinggi Badan (cm)</label>
+                                <input type="number" id="height" placeholder="170" required min="80" max="230" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-nutri-green focus:outline-none font-semibold">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="activity" class="block text-sm font-bold text-nutri-orangeDark mb-1">Tingkat Aktivitas Fisik</label>
+                            <select id="activity" class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-nutri-green focus:outline-none font-semibold bg-white">
+                                <option value="1.2">Jarang Berolahraga (Sedentary)</option>
+                                <option value="1.375">Ringan (Olahraga 1-3 hari/minggu)</option>
+                                <option value="1.55">Sedang (Olahraga 3-5 hari/minggu)</option>
+                                <option value="1.725">Aktif Berat (Olahraga 6-7 hari/minggu)</option>
+                            </select>
+                        </div>
+
+                        <button type="button" onclick="calculateBMI()" class="w-full py-4 bg-nutri-orangeDark hover:bg-nutri-orangeHover text-white font-bold text-lg rounded-xl shadow-lg transition-transform transform active:scale-95">
+                            <i class="fa-solid fa-calculator mr-2"></i> Hitung Hasil BMI
+                        </button>
+                    </div>
+
+                    <!-- Result Card -->
+                    <div class="bg-gradient-to-br from-nutri-yellowLight to-nutri-greenLight p-6 sm:p-8 rounded-2xl border-2 border-nutri-yellow text-center flex flex-col justify-center min-h-[320px]">
+                        <h3 class="text-sm font-bold uppercase tracking-wider text-nutri-orangeDark mb-2">Hasil Analisis Anda</h3>
+                        
+                        <div id="resultPlaceholder" class="py-8">
+                            <i class="fa-solid fa-heart-pulse text-5xl text-nutri-greenDark/40 mb-3 animate-bounce"></i>
+                            <p class="text-gray-500 font-medium">Masukkan data berat dan tinggi badan di samping untuk melihat hasil kalkulasi.</p>
+                        </div>
+
+                        <div id="resultContent" class="hidden space-y-4">
+                            <div>
+                                <span class="text-xs text-gray-600 uppercase font-semibold">Skor Indeks Massa Tubuh</span>
+                                <div id="bmiValue" class="text-5xl font-black text-nutri-orangeDark my-1">0.0</div>
+                                <div id="bmiCategory" class="inline-block px-4 py-1.5 rounded-full font-extrabold text-sm text-white bg-nutri-greenDark shadow-sm">
+                                    Normal
+                                </div>
+                            </div>
+                            
+                            <hr class="border-yellow-200/80 my-4">
+
+                            <div class="bg-white/80 p-4 rounded-xl shadow-inner">
+                                <span class="text-xs text-gray-600 font-bold uppercase">Estimasi Kalori Harian (BMR/TDEE)</span>
+                                <p id="calorieValue" class="text-2xl font-extrabold text-nutri-greenDark">0 kcal/hari</p>
+                            </div>
+                            
+                            <p id="bmiAdvice" class="text-xs text-gray-700 italic font-medium leading-relaxed"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section id="testimoni" class="py-20 bg-amber-50/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-nutri-orangeDark font-extrabold uppercase tracking-wider text-sm bg-nutri-yellow px-4 py-1.5 rounded-full">Kisah Sukses</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-nutri-orangeDark mt-4 mb-2">Transformasi Sehat Klien Kami</h2>
+                <p class="text-gray-600">Perubahan nyata dengan bimbingan nutrisi yang tepat dan konsisten.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testi 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 flex flex-col justify-between relative">
+                    <div class="text-nutri-yellowDark text-lg mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Turun 12 kg dalam 3 bulan tanpa merasa kelaparan! Menu yang disusun oleh NutriLife sangat enak dan cocok dengan masakan sehari-hari keluarga."</p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Client" class="w-12 h-12 rounded-full object-cover border-2 border-nutri-green">
+                        <div>
+                            <h4 class="font-bold text-nutri-orangeDark">Siti Rahmawati</h4>
+                            <p class="text-xs text-gray-500 font-medium">Turun 12 kg • Ibu Rumah Tangga</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 flex flex-col justify-between relative">
+                    <div class="text-nutri-yellowDark text-lg mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Gula darah saya kembali stabil dan stamina saat berolahraga meningkat drastis. Edukasi pola makannya sangat membuka wawasan!"</p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" alt="Client" class="w-12 h-12 rounded-full object-cover border-2 border-nutri-green">
+                        <div>
+                            <h4 class="font-bold text-nutri-orangeDark">Budi Santoso</h4>
+                            <p class="text-xs text-gray-500 font-medium">Kontrol Gula Darah • Karyawan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testi 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-gray-100 flex flex-col justify-between relative">
+                    <div class="text-nutri-yellowDark text-lg mb-4">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-gray-700 italic mb-6">"Pendampingan dari konsultan sangat ramah dan responsif. Diberikan solusi setiap kali saya harus makan di luar saat acara kantor."</p>
+                    <div class="flex items-center space-x-4 pt-4 border-t border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Client" class="w-12 h-12 rounded-full object-cover border-2 border-nutri-green">
+                        <div>
+                            <h4 class="font-bold text-nutri-orangeDark">Diana Putri</h4>
+                            <p class="text-xs text-gray-500 font-medium">Naik Otot 4 kg • Freelancer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONSULTATION FORM SECTION -->
+    <section id="konsultasi" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-br from-nutri-greenLight via-white to-nutri-yellowLight rounded-3xl p-8 sm:p-12 shadow-xl border-2 border-green-200">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-extrabold text-nutri-orangeDark">Daftar Sesi Konsultasi Nutrisi</h2>
+                    <p class="text-gray-600 mt-2">Isi formulir singkat di bawah ini. Tim Nutrisionis kami akan menghubungi Anda melalui WhatsApp.</p>
+                </div>
+
+                <form id="consultForm" onsubmit="submitForm(event)" class="space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-bold text-nutri-orangeDark mb-1">Nama Lengkap</label>
+                            <input type="text" id="name" required placeholder="Contoh: Ani Wijaya" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-nutri-green focus:outline-none font-medium">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-bold text-nutri-orangeDark mb-1">Nomor WhatsApp</label>
+                            <input type="tel" id="phone" required placeholder="081234567890" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-nutri-green focus:outline-none font-medium">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="goal" class="block text-sm font-bold text-nutri-orangeDark mb-1">Target utama Anda?</label>
+                            <select id="goal" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-nutri-green focus:outline-none font-medium bg-white">
+                                <option value="weight-loss">Menurunkan Berat Badan</option>
+                                <option value="weight-gain">Menaikkan Berat/Massa Otot</option>
+                                <option value="health-condition">Manajemen Kondisi Medis</option>
+                                <option value="lifestyle">Pola Makan Sehat Harian</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="schedule" class="block text-sm font-bold text-nutri-orangeDark mb-1">Jadwal Preferensi</label>
+                            <input type="date" id="schedule" required class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-nutri-green focus:outline-none font-medium bg-white">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="notes" class="block text-sm font-bold text-nutri-orangeDark mb-1">Catatan Tambahan / Keluhan (Opsional)</label>
+                        <textarea id="notes" rows="3" placeholder="Ceritakan riwayat kesehatan singkat atau target khusus Anda..." class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:border-nutri-green focus:outline-none font-medium"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-nutri-orangeDark hover:bg-nutri-orangeHover text-white font-bold text-lg rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                        <i class="fa-solid fa-paper-plane mr-2"></i> Kirim Permohonan Konsultasi
+                    </button>
+                </form>
+
+                <!-- Custom Alert Notification Box (NO ALERT) -->
+                <div id="notificationBox" class="hidden mt-6 p-4 rounded-xl bg-nutri-green text-white text-center font-bold shadow-lg transition-all duration-300">
+                    <i class="fa-solid fa-circle-check mr-2 text-xl"></i>
+                    <span id="notificationMessage">Terima kasih! Pendaftaran konsultasi Anda berhasil dikirim.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-nutri-greenDark text-white pt-16 pb-8 border-t-4 border-nutri-yellowDark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-green-700">
+                <!-- Col 1 -->
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-nutri-yellow flex items-center justify-center text-nutri-orangeDark text-xl font-bold">
+                            <i class="fa-solid fa-leaf"></i>
+                        </div>
+                        <span class="text-2xl font-black text-white">Nutri<span class="text-nutri-yellow font-bold">Life</span></span>
+                    </div>
+                    <p class="text-green-100 text-sm leading-relaxed">
+                        Mitra terpercaya Anda untuk konsultasi gizi profesional, panduan pola makan seimbang, dan gaya hidup sehat berkelanjutan.
+                    </p>
+                </div>
+
+                <!-- Col 2 -->
+                <div>
+                    <h4 class="text-nutri-yellow font-bold uppercase text-sm tracking-wider mb-4">Navigasi</h4>
+                    <ul class="space-y-2 text-sm text-green-100 font-medium">
+                        <li><a href="#home" class="hover:text-nutri-yellow transition-colors">Beranda</a></li>
+                        <li><a href="#layanan" class="hover:text-nutri-yellow transition-colors">Layanan Gizi</a></li>
+                        <li><a href="#kalkulator" class="hover:text-nutri-yellow transition-colors">Kalkulator BMI</a></li>
+                        <li><a href="#testimoni" class="hover:text-nutri-yellow transition-colors">Kisah Sukses</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3 -->
+                <div>
+                    <h4 class="text-nutri-yellow font-bold uppercase text-sm tracking-wider mb-4">Kontak Klinik</h4>
+                    <ul class="space-y-3 text-sm text-green-100 font-medium">
+                        <li class="flex items-center"><i class="fa-solid fa-location-dot w-6 text-nutri-yellow"></i> Jakarta South Wellness Center</li>
+                        <li class="flex items-center"><i class="fa-solid fa-phone w-6 text-nutri-yellow"></i> +62 812-3456-7890</li>
+                        <li class="flex items-center"><i class="fa-solid fa-envelope w-6 text-nutri-yellow"></i> halo@nutrilife.id</li>
+                    </ul>
+                </div>
+
+                <!-- Col 4 -->
+                <div>
+                    <h4 class="text-nutri-yellow font-bold uppercase text-sm tracking-wider mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-10 h-10 rounded-full bg-green-800 hover:bg-nutri-yellow hover:text-nutri-orangeDark text-white flex items-center justify-center transition-all"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-green-800 hover:bg-nutri-yellow hover:text-nutri-orangeDark text-white flex items-center justify-center transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-green-800 hover:bg-nutri-yellow hover:text-nutri-orangeDark text-white flex items-center justify-center transition-all"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-xs text-green-200 font-medium">
+                <p>&copy; 2026 NutriLife Health Care. Hak Cipta Dilindungi Undang-Undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Toggle Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Set default minimum date to today for appointment form
+        const scheduleInput = document.getElementById('schedule');
+        if (scheduleInput) {
+            const today = new Date().toISOString().split('T')[0];
+            scheduleInput.setAttribute('min', today);
+        }
+
+        // BMI Calculator Logic
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('weight').value);
+            const heightCm = parseFloat(document.getElementById('height').value);
+            const activity = parseFloat(document.getElementById('activity').value);
+            
+            const placeholder = document.getElementById('resultPlaceholder');
+            const resultContent = document.getElementById('resultContent');
+
+            if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
+                showNotification('Harap masukkan berat dan tinggi badan yang valid.', 'error');
+                return;
+            }
+
+            const heightM = heightCm / 100;
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+            
+            // Calculate BMR approx (Mifflin-St Jeor simplified)
+            const bmr = (10 * weight) + (6.25 * heightCm) - (5 * 30); // Base est. for age ~30
+            const tdee = Math.round(bmr * activity);
+
+            let category = '';
+            let colorClass = '';
+            let advice = '';
+
+            if (bmi < 18.5) {
+                category = 'Kekurangan Berat Badan';
+                colorClass = 'bg-amber-500';
+                advice = 'Tubuh Anda memerlukan asupan kalori lebih tinggi dengan nutrisi seimbang untuk mencapai berat ideal secara sehat.';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                category = 'Berat Badan Ideal / Normal';
+                colorClass = 'bg-nutri-greenDark';
+                advice = 'Selamat! Pertahankan pola makan gizi seimbang dan aktivitas fisik Anda saat ini.';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                category = 'Kelebihan Berat Badan (Overweight)';
+                colorClass = 'bg-nutri-orangeDark';
+                advice = 'Disarankan untuk mengatur kembali porsi piring dan meningkatkan aktivitas harian untuk pencegahan resiko kesehatan.';
+            } else {
+                category = 'Obesitas';
+                colorClass = 'bg-red-600';
+                advice = 'Sangat disarankan melakukan konsultasi gizi intensif untuk menyusun strategi penurunan berat badan yang aman.';
+            }
+
+            // Update UI
+            placeholder.classList.add('hidden');
+            resultContent.classList.remove('hidden');
+
+            document.getElementById('bmiValue').innerText = bmi;
+            
+            const catBadge = document.getElementById('bmiCategory');
+            catBadge.innerText = category;
+            catBadge.className = `inline-block px-4 py-1.5 rounded-full font-extrabold text-sm text-white shadow-sm ${colorClass}`;
+
+            document.getElementById('calorieValue').innerText = `${tdee.toLocaleString('id-ID')} kcal/hari`;
+            document.getElementById('bmiAdvice').innerText = advice;
+        }
+
+        // Form Submit Handler (No Browser Alert)
+        function submitForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            showNotification(`Terima kasih Kak ${name}! Tim Nutrisionis NutriLife akan menghubungi WhatsApp Anda segera.`, 'success');
+            document.getElementById('consultForm').reset();
+        }
+
+        // Notification Message Helper
+        function showNotification(msg, type = 'success') {
+            const notifBox = document.getElementById('notificationBox');
+            const notifMsg = document.getElementById('notificationMessage');
+            
+            notifMsg.innerText = msg;
+            notifBox.classList.remove('hidden', 'bg-red-600', 'bg-nutri-green');
+
+            if(type === 'error') {
+                notifBox.classList.add('bg-red-600');
+            } else {
+                notifBox.classList.add('bg-nutri-green');
+            }
+
+            notifBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            setTimeout(() => {
+                notifBox.classList.add('hidden');
+            }, 6000);
+        }
+    </script>
+</body>
+</html>
